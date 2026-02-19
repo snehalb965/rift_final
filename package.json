@@ -1,0 +1,17 @@
+{
+  "name": "rift-2026-autonomous-cicd-agent",
+  "version": "1.0.0",
+  "description": "RIFT 2026 Hackathon - Autonomous CI/CD Healing Agent with React Dashboard",
+  "scripts": {
+    "dev": "concurrently \"cd backend && uvicorn main:app --reload\" \"cd frontend && npm run dev\"",
+    "build": "cd frontend && npm run build",
+    "test": "python quick_test.py",
+    "deploy": "npm run build"
+  },
+  "keywords": ["rift2026", "hackathon", "cicd", "autonomous", "agent", "react", "fastapi"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

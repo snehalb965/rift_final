@@ -1,0 +1,138 @@
+{
+  "test_repositories": [
+    {
+      "name": "Simple Test Repository",
+      "url": "https://github.com/octocat/Hello-World",
+      "team_name": "RIFT ORGANISERS",
+      "leader_name": "Saiyam Kumar",
+      "expected_branch": "RIFT_ORGANISERS_SAIYAM_KUMAR_AI_Fix",
+      "description": "GitHub's official test repository - minimal code, good for basic testing",
+      "expected_issues": "Few or no issues (simple repository)",
+      "test_priority": "HIGH"
+    },
+    {
+      "name": "Python Requests Library",
+      "url": "https://github.com/psf/requests",
+      "team_name": "Python Masters",
+      "leader_name": "Kenneth Reitz",
+      "expected_branch": "PYTHON_MASTERS_KENNETH_REITZ_AI_Fix",
+      "description": "Popular Python HTTP library - well-maintained, good test case",
+      "expected_issues": "Some linting issues, potential unused imports",
+      "test_priority": "HIGH"
+    },
+    {
+      "name": "Flask Web Framework",
+      "url": "https://github.com/pallets/flask",
+      "team_name": "Web Developers",
+      "leader_name": "Armin Ronacher",
+      "expected_branch": "WEB_DEVELOPERS_ARMIN_RONACHER_AI_Fix",
+      "description": "Flask web framework - larger codebase, more complex",
+      "expected_issues": "Various code quality issues, imports, syntax patterns",
+      "test_priority": "MEDIUM"
+    },
+    {
+      "name": "Simple Python Project",
+      "url": "https://github.com/realpython/python-basics-exercises",
+      "team_name": "Code Learners",
+      "leader_name": "Real Python",
+      "expected_branch": "CODE_LEARNERS_REAL_PYTHON_AI_Fix",
+      "description": "Python learning exercises - likely has intentional issues",
+      "expected_issues": "Educational code with potential issues to fix",
+      "test_priority": "HIGH"
+    },
+    {
+      "name": "Django Web Framework",
+      "url": "https://github.com/django/django",
+      "team_name": "Django Team",
+      "leader_name": "Adrian Holovaty",
+      "expected_branch": "DJANGO_TEAM_ADRIAN_HOLOVATY_AI_Fix",
+      "description": "Large Django framework - stress test for the agent",
+      "expected_issues": "Complex codebase, many files, various issue types",
+      "test_priority": "LOW"
+    }
+  ],
+  "branch_naming_tests": [
+    {
+      "team_name": "RIFT ORGANISERS",
+      "leader_name": "Saiyam Kumar",
+      "expected": "RIFT_ORGANISERS_SAIYAM_KUMAR_AI_Fix"
+    },
+    {
+      "team_name": "Code Warriors",
+      "leader_name": "John Doe",
+      "expected": "CODE_WARRIORS_JOHN_DOE_AI_Fix"
+    },
+    {
+      "team_name": "Team@123!",
+      "leader_name": "User#456$",
+      "expected": "TEAM_USER_AI_Fix"
+    },
+    {
+      "team_name": "My Awesome Team",
+      "leader_name": "Jane Smith-Jones",
+      "expected": "MY_AWESOME_TEAM_JANE_SMITHJONES_AI_Fix"
+    }
+  ],
+  "expected_bug_types": [
+    {
+      "type": "LINTING",
+      "example": "LINTING error in src/utils.py line 15 → Fix: remove the import statement",
+      "description": "Unused imports, style violations"
+    },
+    {
+      "type": "SYNTAX", 
+      "example": "SYNTAX error in src/validator.py line 8 → Fix: add the colon at the correct position",
+      "description": "Missing colons, brackets, invalid syntax"
+    },
+    {
+      "type": "LOGIC",
+      "example": "LOGIC error in src/main.py line 23 → Fix: use == for comparison",
+      "description": "Assignment vs comparison, logic errors"
+    },
+    {
+      "type": "TYPE_ERROR",
+      "example": "TYPE_ERROR in src/calc.py line 45 → Fix: convert types before concatenation", 
+      "description": "Type mismatches, attribute errors"
+    },
+    {
+      "type": "IMPORT",
+      "example": "IMPORT error in src/module.py line 3 → Fix: use absolute imports",
+      "description": "Import path issues, missing modules"
+    },
+    {
+      "type": "INDENTATION",
+      "example": "INDENTATION error in src/func.py line 12 → Fix: use consistent indentation",
+      "description": "Mixed tabs/spaces, indentation inconsistencies"
+    }
+  ],
+  "dashboard_test_scenarios": [
+    {
+      "scenario": "Happy Path Test",
+      "repo_url": "https://github.com/octocat/Hello-World",
+      "team_name": "Test Team",
+      "leader_name": "Test User",
+      "expected_behavior": "Should complete successfully with minimal issues found"
+    },
+    {
+      "scenario": "Large Repository Test",
+      "repo_url": "https://github.com/psf/requests",
+      "team_name": "Large Repo Test",
+      "leader_name": "Stress Test",
+      "expected_behavior": "Should handle large codebase, may take longer, should find multiple issues"
+    },
+    {
+      "scenario": "Invalid Repository Test",
+      "repo_url": "https://github.com/nonexistent/repository",
+      "team_name": "Error Test",
+      "leader_name": "Error User",
+      "expected_behavior": "Should fail gracefully with clear error message"
+    },
+    {
+      "scenario": "Special Characters Test",
+      "repo_url": "https://github.com/octocat/Hello-World",
+      "team_name": "Team@#$%",
+      "leader_name": "User!@#",
+      "expected_behavior": "Should sanitize names properly for branch creation"
+    }
+  ]
+}

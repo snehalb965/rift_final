@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>RIFT 2026 API Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        async function testAPI() {
+            const results = document.getElementById('results');
+            
+            try {
+                // Test health endpoint
+                const response = await fetch('http://localhost:8000/health');
+                const data = await response.json();
+                results.innerHTML += `<p>✅ Health: ${JSON.stringify(data)}</p>`;
+                
+                // Test API docs availability
+                const docsResponse = await fetch('http://localhost:8000/docs');
+                results.innerHTML += `<p>✅ Docs status: ${docsResponse.status}</p>`;
+                
+                // Test OpenAPI schema
+                const schemaResponse = await fetch('http://localhost:8000/openapi.json');
+                const schema = await schemaResponse.json();
+                results.innerHTML += `<p>✅ Schema: ${schema.info.title}</p>`;
+                
+                results.innerHTML += `<p><a href="http://localhost:8000/docs" target="_blank">🔗 Open API Docs</a></p>`;
+                results.innerHTML += `<p><a href="http://localhost:8000/redoc" target="_blank">🔗 Open ReDoc</a></p>`;
+                
+            } catch (error) {
+                results.innerHTML += `<p>❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        testAPI();
+    </script>
+</body>
+</html>

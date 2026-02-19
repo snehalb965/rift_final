@@ -1,0 +1,40 @@
+name: CI — Run Tests
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Dependencies
+        run: pip install pytest pytest-json-report pyflakes pylint || true
+      - name: Install Project Dependencies
+        run: pip install -r requirements.txt || true
+      - name: Run Python Tests
+        run: python -m pytest --tb=short -v --json-report --json-report-file=test-results.json . || true
+      - name: Set up Node.js
+        if: hashFiles('package.json') != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Node Dependencies
+        if: hashFiles('package.json') != ''
+        run: npm ci
+      - name: Run Node Tests
+        if: hashFiles('package.json') != ''
+        run: npm test -- --passWithNoTests
+      - name: Upload Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results.json
+          if-no-files-found: ignore

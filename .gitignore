@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+backend/__pycache__/
+backend/*.pyc
+backend/.pytest_cache/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# Build outputs
+frontend/dist/
+frontend/build/
+backend/results/
+
+# Temporary files
+*.log
+*.tmp
+temp/
+test_repo_with_issues/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python virtual environment
+venv/
+env/
+.venv/
+
+# Test outputs
+test_results.json
+quick_test_result.json
+
+# Deployment
+.vercel/
+.railway/

@@ -1,0 +1,33 @@
+<svg width="64" height="64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background pattern -->
+  <defs>
+    <pattern id="circuitPattern" patternUnits="userSpaceOnUse" width="20" height="20">
+      <rect width="20" height="20" fill="#1a1a1a"/>
+      <path d="M0 10h20M10 0v20M5 5h10M5 15h10" stroke="#333" stroke-width="0.5" fill="none"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="200" height="200" fill="url(#circuitPattern)"/>
+  
+  <!-- RIFT text -->
+  <text x="100" y="80" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" text-anchor="middle" fill="#DC2626">
+    RIFT
+  </text>
+  
+  <!-- 2026 text -->
+  <text x="170" y="50" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#DC2626" transform="rotate(90 170 50)">
+    2026
+  </text>
+  
+  <!-- MAKE THE SHIFT text -->
+  <text x="100" y="130" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white" letter-spacing="2px">
+    MAKE THE SHIFT
+  </text>
+  
+  <!-- Decorative elements -->
+  <circle cx="30" cy="30" r="3" fill="#DC2626" opacity="0.7"/>
+  <circle cx="170" cy="170" r="3" fill="#DC2626" opacity="0.7"/>
+  <rect x="20" y="160" width="15" height="2" fill="#DC2626" opacity="0.5"/>
+  <rect x="165" y="40" width="15" height="2" fill="#DC2626" opacity="0.5"/>
+</svg>

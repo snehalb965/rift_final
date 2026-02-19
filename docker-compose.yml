@@ -1,0 +1,52 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_USERNAME=${GITHUB_USERNAME}
+      - MAX_RETRIES=${MAX_RETRIES:-5}
+      - FRONTEND_URL=http://localhost:3000
+    volumes:
+      - ./backend:/app
+      - agent_results:/app/results
+    restart: unless-stopped
+
+  frontend:
+    image: node:20-alpine
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    depends_on:
+      - backend
+
+volumes:
+  agent_results:
+  frontend_node_modules:
+```
+
+---
+
+## 📄 19. `.env.example`
+```
+OPENAI_API_KEY=sk-your-openai-key-here
+GITHUB_TOKEN=ghp_your-github-token-here
+GITHUB_USERNAME=your-github-username
+MAX_RETRIES=5
+AGENT_TIMEOUT=300
+BACKEND_PORT=8000
+FRONTEND_URL=http://localhost:3000
+USE_DOCKER_SANDBOX=true
+SANDBOX_TIMEOUT=60
+RESULTS_DIR=./results
